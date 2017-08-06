@@ -10410,8 +10410,178 @@ var MobileMenu = function () {
 exports.default = MobileMenu;
 
 /***/ }),
+<<<<<<< HEAD
 /* 3 */
 /***/ (function(module, exports) {
+=======
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _jquery = __webpack_require__(0);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _noframework = __webpack_require__(1);
+
+var _noframework2 = _interopRequireDefault(_noframework);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var RevealOnScroll = function () {
+	function RevealOnScroll(els, offset) {
+		_classCallCheck(this, RevealOnScroll);
+
+		this.itemsToReveal = els;
+		this.offsetPercentage = offset;
+		this.hideInitially();
+		this.createWaypoints();
+	}
+
+	_createClass(RevealOnScroll, [{
+		key: 'hideInitially',
+		value: function hideInitially() {
+			this.itemsToReveal.addClass("reveal-item");
+		}
+	}, {
+		key: 'createWaypoints',
+		value: function createWaypoints() {
+			var that = this;
+			this.itemsToReveal.each(function () {
+				var currentItem = this;
+				new Waypoint({
+					element: currentItem,
+					handler: function handler() {
+						(0, _jquery2.default)(currentItem).addClass("reveal-item--is-visible");
+					},
+					offset: that.offsetPercentage
+				});
+			});
+		}
+	}]);
+
+	return RevealOnScroll;
+}();
+
+exports.default = RevealOnScroll;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _jquery = __webpack_require__(0);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _noframework = __webpack_require__(1);
+
+var _noframework2 = _interopRequireDefault(_noframework);
+
+var _jquerySmoothScroll = __webpack_require__(6);
+
+var _jquerySmoothScroll2 = _interopRequireDefault(_jquerySmoothScroll);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var StickyHeader = function () {
+	function StickyHeader() {
+		_classCallCheck(this, StickyHeader);
+
+		this.lazyImages = (0, _jquery2.default)(".lazyload");
+		this.siteHeader = (0, _jquery2.default)(".site-header");
+		this.headerTriggerElement = (0, _jquery2.default)(".large-hero__title");
+		this.createHeaderWaypoint();
+		this.pageSections = (0, _jquery2.default)(".page-section");
+		this.headerLinks = (0, _jquery2.default)(".primary-nav a");
+		this.createPageSectionWaypoints();
+		this.addSmoothScrolling();
+		this.refreshWaypoints();
+	}
+
+	_createClass(StickyHeader, [{
+		key: 'refreshWaypoints',
+		value: function refreshWaypoints() {
+			this.lazyImages.on('load', function () {
+				Waypoint.refreshAll();
+			});
+		}
+	}, {
+		key: 'addSmoothScrolling',
+		value: function addSmoothScrolling() {
+			this.headerLinks.smoothScroll();
+		}
+	}, {
+		key: 'createHeaderWaypoint',
+		value: function createHeaderWaypoint() {
+			var that = this;
+			new Waypoint({
+				element: this.headerTriggerElement[0],
+				handler: function handler(direction) {
+					if (direction == "down") {
+						that.siteHeader.addClass("site-header--dark");
+					} else {
+						that.siteHeader.removeClass("site-header--dark");
+					}
+				}
+			});
+		}
+	}, {
+		key: 'createPageSectionWaypoints',
+		value: function createPageSectionWaypoints() {
+			var that = this;
+			this.pageSections.each(function () {
+				var currentPageSection = this;
+				new Waypoint({
+					element: currentPageSection,
+					handler: function handler(direction) {
+						if (direction == "down") {
+							var matchingHeaderLink = currentPageSection.getAttribute("data-matching-link");
+							that.headerLinks.removeClass("is-current-link");
+							(0, _jquery2.default)(matchingHeaderLink).addClass("is-current-link");
+						}
+					},
+					offset: "18%"
+				});
+
+				new Waypoint({
+					element: currentPageSection,
+					handler: function handler(direction) {
+						if (direction == "up") {
+							var matchingHeaderLink = currentPageSection.getAttribute("data-matching-link");
+							that.headerLinks.removeClass("is-current-link");
+							(0, _jquery2.default)(matchingHeaderLink).addClass("is-current-link");
+						}
+					},
+					offset: "-40%"
+				});
+			});
+		}
+	}]);
+
+	return StickyHeader;
+}();
+>>>>>>> lazyloading
 
 throw new Error("Module build failed: Error: EPERM: operation not permitted, open 'C:\\Users\\gibbs01\\Desktop\\Sites\\travel-site\\package.json'\n    at Error (native)\n    at Object.fs.openSync (fs.js:641:18)\n    at Object.fs.readFileSync (fs.js:509:33)\n    at ConfigChainBuilder.addConfig (C:\\Users\\gibbs01\\Desktop\\Sites\\travel-site\\node_modules\\babel-core\\lib\\transformation\\file\\options\\build-config-chain.js:146:32)\n    at ConfigChainBuilder.findConfigs (C:\\Users\\gibbs01\\Desktop\\Sites\\travel-site\\node_modules\\babel-core\\lib\\transformation\\file\\options\\build-config-chain.js:102:30)\n    at buildConfigChain (C:\\Users\\gibbs01\\Desktop\\Sites\\travel-site\\node_modules\\babel-core\\lib\\transformation\\file\\options\\build-config-chain.js:61:13)\n    at OptionManager.init (C:\\Users\\gibbs01\\Desktop\\Sites\\travel-site\\node_modules\\babel-core\\lib\\transformation\\file\\options\\option-manager.js:354:58)\n    at File.initOptions (C:\\Users\\gibbs01\\Desktop\\Sites\\travel-site\\node_modules\\babel-core\\lib\\transformation\\file\\index.js:212:65)\n    at new File (C:\\Users\\gibbs01\\Desktop\\Sites\\travel-site\\node_modules\\babel-core\\lib\\transformation\\file\\index.js:135:24)\n    at Pipeline.transform (C:\\Users\\gibbs01\\Desktop\\Sites\\travel-site\\node_modules\\babel-core\\lib\\transformation\\pipeline.js:46:16)");
 

@@ -60,22 +60,38 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
+<<<<<<< HEAD
 /******/ 	return __webpack_require__(__webpack_require__.s = 6);
+=======
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+>>>>>>> lazyloading
 /******/ })
 /************************************************************************/
 /******/ ({
 
+<<<<<<< HEAD
 /***/ 6:
+=======
+/***/ 8:
+>>>>>>> lazyloading
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
+<<<<<<< HEAD
 __webpack_require__(7);
 
 /***/ }),
 
 /***/ 7:
+=======
+__webpack_require__(9);
+
+/***/ }),
+
+/***/ 9:
+>>>>>>> lazyloading
 /***/ (function(module, exports) {
 
 (function(window, factory) {
