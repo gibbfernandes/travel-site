@@ -10,9 +10,11 @@ class StickyHeader {
 		this.createHeaderWaypoint();
 		this.pageSections = $(".page-section");
 		this.headerLinks = $(".primary-nav a");
+		this.logoLink = $(".site-header a");
 		this.createPageSectionWaypoints();
 		this.addSmoothScrolling();
 		this.refreshWaypoints();
+		this.removeMatchingHeaderLinkColor();
 	}
 	
 	refreshWaypoints() {
@@ -23,6 +25,7 @@ class StickyHeader {
 	
 	addSmoothScrolling() {
 		this.headerLinks.smoothScroll();
+		this.logoLink.smoothScroll();
 	}
 	
 	createHeaderWaypoint() {
@@ -34,6 +37,18 @@ class StickyHeader {
 					that.siteHeader.addClass("site-header--dark");
 				} else {
 					that.siteHeader.removeClass("site-header--dark");
+				}
+			}
+		});
+	}
+	
+	removeMatchingHeaderLinkColor() {
+		var that = this;
+		new Waypoint({
+			element: this.headerTriggerElement[0],
+			handler: function(direction) {
+				if (direction == "up") {
+					that.headerLinks.removeClass("is-current-link");
 				}
 			}
 		});

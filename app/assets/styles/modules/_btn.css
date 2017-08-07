@@ -4,6 +4,13 @@
 	text-decoration: none;
 	padding: .75rem 1.2rem;
 	display: inline-block;
+	transition: background-color .3s ease-out;
+	
+	@mixin atMedium {
+		.site-header--dark  & {
+			background-color: $mainOrange;
+		}
+	}
 	
 	&--orange {
 		background-color: $mainOrange;
