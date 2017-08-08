@@ -12,9 +12,11 @@ class StickyHeader {
 		this.headerLinks = $(".primary-nav a");
 		this.logoLink = $(".site-header a");
 		this.createPageSectionWaypoints();
+		this.scrollUpButton = $(".scroll-up a");
 		this.addSmoothScrolling();
 		this.refreshWaypoints();
 		this.removeMatchingHeaderLinkColor();
+		
 	}
 	
 	refreshWaypoints() {
@@ -26,6 +28,7 @@ class StickyHeader {
 	addSmoothScrolling() {
 		this.headerLinks.smoothScroll();
 		this.logoLink.smoothScroll();
+		this.scrollUpButton.smoothScroll();
 	}
 	
 	createHeaderWaypoint() {

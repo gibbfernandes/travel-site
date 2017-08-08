@@ -1,0 +1,14 @@
+.scroll-up {
+	opacity: 0;
+	visibility: hidden;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	z-index: 4;
+	transition: all .3s ease-out;
+	
+	&--is-visible {
+		visibility: visible;
+		opacity: 1;
+	}
+}

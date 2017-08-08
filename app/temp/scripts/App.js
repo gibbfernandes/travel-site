@@ -11113,6 +11113,10 @@ var _Modal = __webpack_require__(7);
 
 var _Modal2 = _interopRequireDefault(_Modal);
 
+var _ScrollUp = __webpack_require__(8);
+
+var _ScrollUp2 = _interopRequireDefault(_ScrollUp);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mobileMenu = new _MobileMenu2.default();
@@ -11120,6 +11124,7 @@ new _RevealOnScroll2.default((0, _jquery2.default)(".feature-item"), "85%");
 new _RevealOnScroll2.default((0, _jquery2.default)(".testimonial"), "60%");
 var stickyHeader = new _StickyHeader2.default();
 var modal = new _Modal2.default();
+var scrollUp = new _ScrollUp2.default();
 
 /***/ }),
 /* 3 */
@@ -11275,6 +11280,7 @@ var StickyHeader = function () {
 		this.headerLinks = (0, _jquery2.default)(".primary-nav a");
 		this.logoLink = (0, _jquery2.default)(".site-header a");
 		this.createPageSectionWaypoints();
+		this.scrollUpButton = (0, _jquery2.default)(".scroll-up a");
 		this.addSmoothScrolling();
 		this.refreshWaypoints();
 		this.removeMatchingHeaderLinkColor();
@@ -11292,6 +11298,7 @@ var StickyHeader = function () {
 		value: function addSmoothScrolling() {
 			this.headerLinks.smoothScroll();
 			this.logoLink.smoothScroll();
+			this.scrollUpButton.smoothScroll();
 		}
 	}, {
 		key: 'createHeaderWaypoint',
@@ -11793,6 +11800,64 @@ var Modal = function () {
 }();
 
 exports.default = Modal;
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _jquery = __webpack_require__(0);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _noframework = __webpack_require__(1);
+
+var _noframework2 = _interopRequireDefault(_noframework);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var ScrollUp = function () {
+	function ScrollUp() {
+		_classCallCheck(this, ScrollUp);
+
+		this.headerTriggerElement = (0, _jquery2.default)(".large-hero__title");
+		this.scrollUpButton = (0, _jquery2.default)(".scroll-up a");
+		this.scrollUpDiv = (0, _jquery2.default)(".scroll-up");
+
+		this.visibleScrollUpDiv();
+	}
+
+	_createClass(ScrollUp, [{
+		key: 'visibleScrollUpDiv',
+		value: function visibleScrollUpDiv() {
+			var that = this;
+			new Waypoint({
+				element: this.headerTriggerElement[0],
+				handler: function handler(direction) {
+					if (direction == "down") {
+						that.scrollUpDiv.addClass("scroll-up--is-visible");
+					} else {
+						that.scrollUpDiv.removeClass("scroll-up--is-visible");
+					}
+				}
+			});
+		}
+	}]);
+
+	return ScrollUp;
+}();
+
+exports.default = ScrollUp;
 
 /***/ })
 /******/ ]);
